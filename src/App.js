@@ -1,14 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import GameContainer from "components/GameContainer";
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        Test
-      </div>
-    );
+    return <GameContainer />;
   }
 }
 

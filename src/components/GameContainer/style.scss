@@ -1,0 +1,15 @@
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0 0 -40px;
+  transition: all 1s;
+
+  &__item {
+    width: 320px;
+    min-width: 320px;
+    margin-left: 40px;
+    background: linear-gradient(180deg, #4568DC 0%, #B06AB3 100%), #EF8E48;
+    transition: all 1s;
+  }
+}
