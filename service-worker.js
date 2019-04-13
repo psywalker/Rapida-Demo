@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Rapida-Demo/precache-manifest.398716db834291a5fc2d1b8b0bed3966.js"
+  "/Rapido-Demo/precache-manifest.def4b2ba57f86ad40cd2ffb55836554e.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Rapida-Demo/index.html", {
+workbox.routing.registerNavigationRoute("/Rapido-Demo/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

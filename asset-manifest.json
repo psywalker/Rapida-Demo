@@ -1,14 +1,13 @@
 {
-  "main.css": "/Rapida-Demo/static/css/main.e8cf6be5.chunk.css",
-  "main.js": "/Rapida-Demo/static/js/main.bcbf9025.chunk.js",
-  "main.js.map": "/Rapida-Demo/static/js/main.bcbf9025.chunk.js.map",
-  "runtime~main.js": "/Rapida-Demo/static/js/runtime~main.6567ce07.js",
-  "runtime~main.js.map": "/Rapida-Demo/static/js/runtime~main.6567ce07.js.map",
-  "static/js/2.6efc73d3.chunk.js": "/Rapida-Demo/static/js/2.6efc73d3.chunk.js",
-  "static/js/2.6efc73d3.chunk.js.map": "/Rapida-Demo/static/js/2.6efc73d3.chunk.js.map",
-  "index.html": "/Rapida-Demo/index.html",
-  "precache-manifest.398716db834291a5fc2d1b8b0bed3966.js": "/Rapida-Demo/precache-manifest.398716db834291a5fc2d1b8b0bed3966.js",
-  "service-worker.js": "/Rapida-Demo/service-worker.js",
-  "static/css/main.e8cf6be5.chunk.css.map": "/Rapida-Demo/static/css/main.e8cf6be5.chunk.css.map",
-  "static/media/logo.svg": "/Rapida-Demo/static/media/logo.5d5d9eef.svg"
+  "main.css": "/Rapido-Demo/static/css/main.b39377ee.chunk.css",
+  "main.js": "/Rapido-Demo/static/js/main.398a7ef1.chunk.js",
+  "main.js.map": "/Rapido-Demo/static/js/main.398a7ef1.chunk.js.map",
+  "runtime~main.js": "/Rapido-Demo/static/js/runtime~main.c19be1e5.js",
+  "runtime~main.js.map": "/Rapido-Demo/static/js/runtime~main.c19be1e5.js.map",
+  "static/js/2.2752fb64.chunk.js": "/Rapido-Demo/static/js/2.2752fb64.chunk.js",
+  "static/js/2.2752fb64.chunk.js.map": "/Rapido-Demo/static/js/2.2752fb64.chunk.js.map",
+  "index.html": "/Rapido-Demo/index.html",
+  "precache-manifest.def4b2ba57f86ad40cd2ffb55836554e.js": "/Rapido-Demo/precache-manifest.def4b2ba57f86ad40cd2ffb55836554e.js",
+  "service-worker.js": "/Rapido-Demo/service-worker.js",
+  "static/css/main.b39377ee.chunk.css.map": "/Rapido-Demo/static/css/main.b39377ee.chunk.css.map"
 }
