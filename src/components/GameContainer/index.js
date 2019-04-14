@@ -1,15 +1,28 @@
 import React, { Component } from "react";
-import GameItem from "components/GameItem";
+import GameItemField from "components/GameItems/GameItemField";
+import GameItemText from "components/GameItems/GameItemText";
+import { fieldSmallState, fieldBigState } from "initialStates/fieldsState";
 import "./style.scss";
 
 class GameContainer extends Component {
-  state = { value: 0 };
+  state = { smallFieldCount: 0 };
+
+  smallFieldArr = Array.from({ length: fieldSmallState.count }, (v, k) => ++k);
+
+  bigFieldArr = Array.from({ length: fieldBigState.count }, (v, k) => ++k);
 
   render() {
     return (
       <div className="game">
-        <GameItem />
-        <GameItem />
+        <div className="game__item">
+          <GameItemField
+            smallFieldArr={this.smallFieldArr}
+            bigFieldArr={this.bigFieldArr}
+          />
+        </div>
+        <div className="game__item">
+          <GameItemText />
+        </div>
       </div>
     )
   }

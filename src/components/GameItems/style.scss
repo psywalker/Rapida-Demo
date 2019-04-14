@@ -1,0 +1,56 @@
+
+.game-field-container {
+  position: relative;
+  box-sizing: border-box;
+  margin: 17px 12px;
+  padding: 11px;
+  border-radius: 3px;
+  height: 368px;
+  background: #fff;
+
+  &__icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 13px;
+    top: 14px;
+    background: url("../../img/magic-wand.svg") center no-repeat;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  &__fields {
+    
+  }
+
+  &__result {
+    margin-top: 23px;
+  }
+}
+
+.result-btn {
+  display: block;
+  width: 178px;
+  height: 43px;
+  margin: 23px auto 0;
+  background: none;
+  border: 1px solid #000000;
+  border-radius: 40px;
+  color: #000;
+  outline: none;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .5;
+  }
+}

@@ -1,0 +1,50 @@
+.game-field {
+  &__title {
+    font-weight: normal;
+    font-size: 14px;
+    font-weight: 300;
+
+    & b {
+      font-weight: 600;
+    }
+  }
+}
+
+.game-field-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    width: 39px;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 39px;
+    height: 39px;
+    background: none;
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s;
+    outline: none;
+
+    &:hover,
+    &.game-field-list__btn_press {
+      background: #FFD205;
+      width: 34px;
+      height: 34px;
+      border: 1px solid transparent;
+    }
+
+    &:active {
+      background: rgb(212, 193, 107);
+    }
+  }
+}
