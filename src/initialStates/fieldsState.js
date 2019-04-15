@@ -1,7 +1,9 @@
 export const fieldSmallState = {
-  count: 2
+  count: 2,
+  max: 1
 };
 
 export const fieldBigState = {
-  count: 19
+  count: 19,
+  max: 8
 };
