@@ -1,14 +1,14 @@
 {
-  "main.css": "/Rapido-Demo/static/css/main.1ffa88bb.chunk.css",
-  "main.js": "/Rapido-Demo/static/js/main.94731df4.chunk.js",
-  "main.js.map": "/Rapido-Demo/static/js/main.94731df4.chunk.js.map",
-  "runtime~main.js": "/Rapido-Demo/static/js/runtime~main.c19be1e5.js",
-  "runtime~main.js.map": "/Rapido-Demo/static/js/runtime~main.c19be1e5.js.map",
-  "static/js/2.31b5e55c.chunk.js": "/Rapido-Demo/static/js/2.31b5e55c.chunk.js",
-  "static/js/2.31b5e55c.chunk.js.map": "/Rapido-Demo/static/js/2.31b5e55c.chunk.js.map",
+  "main.css": "/Rapido-Demo/static/css/main.c387fab9.chunk.css",
+  "main.js": "/Rapido-Demo/static/js/main.f07cc034.chunk.js",
+  "main.js.map": "/Rapido-Demo/static/js/main.f07cc034.chunk.js.map",
+  "runtime~main.js": "/Rapido-Demo/static/js/runtime~main.175d5e59.js",
+  "runtime~main.js.map": "/Rapido-Demo/static/js/runtime~main.175d5e59.js.map",
+  "static/js/2.08b5c761.chunk.js": "/Rapido-Demo/static/js/2.08b5c761.chunk.js",
+  "static/js/2.08b5c761.chunk.js.map": "/Rapido-Demo/static/js/2.08b5c761.chunk.js.map",
   "index.html": "/Rapido-Demo/index.html",
-  "precache-manifest.6f16abd9cd70166c709793dff1534cf2.js": "/Rapido-Demo/precache-manifest.6f16abd9cd70166c709793dff1534cf2.js",
+  "precache-manifest.2aac7065d802684d81c16af51e9cf9de.js": "/Rapido-Demo/precache-manifest.2aac7065d802684d81c16af51e9cf9de.js",
   "service-worker.js": "/Rapido-Demo/service-worker.js",
-  "static/css/main.1ffa88bb.chunk.css.map": "/Rapido-Demo/static/css/main.1ffa88bb.chunk.css.map",
+  "static/css/main.c387fab9.chunk.css.map": "/Rapido-Demo/static/css/main.c387fab9.chunk.css.map",
   "static/media/style.scss": "/Rapido-Demo/static/media/magic-wand.85eacb21.svg"
 }
