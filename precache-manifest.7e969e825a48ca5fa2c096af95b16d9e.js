@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "2327eb6854a48ad82f10",
+    "revision": "19be9d4e450e2031bd9a",
     "url": "/Rapido-Demo/static/css/main.f55f6f6a.chunk.css"
   },
   {
-    "revision": "2327eb6854a48ad82f10",
-    "url": "/Rapido-Demo/static/js/main.8fb48c12.chunk.js"
+    "revision": "19be9d4e450e2031bd9a",
+    "url": "/Rapido-Demo/static/js/main.fbb81774.chunk.js"
   },
   {
     "revision": "b5c3f407f181cca12f5a",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/Rapido-Demo/static/media/magic-wand.85eacb21.svg"
   },
   {
-    "revision": "df3ef2418cd9c927ca33ccf3ed038616",
+    "revision": "e34f5cbe8ce2ef16be877df2d23a376b",
     "url": "/Rapido-Demo/index.html"
   }
 ];
