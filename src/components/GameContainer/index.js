@@ -6,7 +6,8 @@ import {
   getInitionalBtnArr,
   getNewStateArr,
   getGameResult,
-  getPressBtnState
+  getPressBtnState,
+  getRandomInt
 } from "selectors/selectors";
 import "./style.scss";
 
@@ -79,6 +80,20 @@ class GameContainer extends Component {
     });
   };
 
+  handleGeneratedNumbers = () => {
+    const bigArr = getRandomInt(0, 19, fieldBigState.max),
+      smallArr = getRandomInt(0, 2, fieldSmallState.max),
+      latBig = bigArr[bigArr.length - 1],
+      latSmall = smallArr[smallArr.length - 1];
+
+    this.setState({
+      btnPressBigArr: bigArr,
+      latestNumberBig: latBig,
+      btnPressSmallArr: smallArr,
+      latestNumberSmall: latSmall
+    });
+  }
+
   render() {
     const {
       btnPressBigArr,
@@ -106,6 +121,7 @@ class GameContainer extends Component {
             btnPressSmallArr={btnPressSmallArr}
             handleResult={this.handleResult}
             btnPressLengthFlag={btnPressLengthFlag}
+            handleGeneratedNumbers={this.handleGeneratedNumbers}
           />
         </div>
         <div className="game__item">

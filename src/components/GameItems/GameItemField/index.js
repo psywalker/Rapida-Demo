@@ -10,11 +10,17 @@ const GameItemField = ({
   btnPressBigArr,
   btnPressSmallArr,
   handleResult,
-  btnPressLengthFlag
+  btnPressLengthFlag,
+  handleGeneratedNumbers
 }) => {
   return (
     <div className="game-field-container">
-      <i className="game-field-container__icon" />
+      <i
+        onClick={handleGeneratedNumbers}
+        onTouchStart={handleGeneratedNumbers}
+        onTouchEnd={handleGeneratedNumbers}
+        className="game-field-container__icon"
+      />
       <h2 className="game-field-container__title">Билет 1</h2>
       <div className="game-field-container__fields">
         <GameFieldBig
