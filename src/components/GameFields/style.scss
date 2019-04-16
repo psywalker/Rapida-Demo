@@ -35,7 +35,9 @@
     transition: all .3s;
     outline: none;
 
-    &:hover,
+    &:hover {
+      box-shadow:2px 0px 23px 0px rgba(50, 50, 50, 0.49);
+    }
     &.game-field-list__btn_press {
       background: #FFD205;
       width: 34px;

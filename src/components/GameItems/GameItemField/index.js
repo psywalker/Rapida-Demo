@@ -9,7 +9,8 @@ const GameItemField = ({
   handleBtnPress,
   btnPressBigArr,
   btnPressSmallArr,
-  handleResult
+  handleResult,
+  btnPressLengthFlag
 }) => {
   return (
     <div className="game-field-container">
@@ -29,7 +30,10 @@ const GameItemField = ({
       </div>
 
       <button
+        disabled={btnPressLengthFlag}
         onClick={handleResult}
+        onTouchStart={handleResult}
+        onTouchEnd={handleResult}
         className="game-field-container__result result-btn"
       >
         Показать результат

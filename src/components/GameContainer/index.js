@@ -5,8 +5,8 @@ import { fieldSmallState, fieldBigState } from "initialStates/fieldsState";
 import {
   getInitionalBtnArr,
   getNewStateArr,
-  getActionPressNum,
-  getRandomInt
+  getGameResult,
+  getPressBtnState
 } from "selectors/selectors";
 import "./style.scss";
 
@@ -15,77 +15,86 @@ class GameContainer extends Component {
     btnPressSmallArr: [],
     latestNumberSmall: null,
     btnPressBigArr: [],
-    latestNumberBig: null
+    latestNumberBig: null,
+    randomBigArr: [],
+    randomSmallArr: [],
+    win: false,
+    bigResultCount: 0,
+    smallResultCount: 0,
+    resultFlag: false
   };
 
   smallFieldArr = getInitionalBtnArr(fieldSmallState.count);
   bigFieldArr = getInitionalBtnArr(fieldBigState.count);
-  
-  handleBtnPress = action => {
-    switch (action.type) {
-      case "fieldBig":
-        let newArrBig = getActionPressNum(
-          action.btnPress,
-          this.state.btnPressBigArr,
-          fieldBigState.max,
-          this.state.latestNumberBig
-        );
 
-        this.setState({
-          btnPressBigArr: getNewStateArr(newArrBig, action),
-          latestNumberBig: action.id
-        });
-        break;
-      case "fieldSmall":
-        let newArrSmall = getActionPressNum(
-          action.btnPress,
-          this.state.btnPressSmallArr,
-          fieldSmallState.max,
-          this.state.latestNumberSmall
-        );
-        this.setState({
-          btnPressSmallArr: getNewStateArr(newArrSmall, action),
-          latestNumberSmall: action.id
-        });
-        break;
-      default:
-        return false;
+  handleBtnPress = action => {
+    const {
+      btnPressBigArr,
+      latestNumberBig,
+      btnPressSmallArr,
+      latestNumberSmall
+    } = this.state;
+
+    const newArrObj = getPressBtnState(
+      action,
+      btnPressBigArr,
+      btnPressSmallArr,
+      latestNumberBig,
+      latestNumberSmall,
+      fieldBigState.max,
+      fieldSmallState.max
+    );
+
+    if (newArrObj.type === "big") {
+      this.setState({
+        btnPressBigArr: getNewStateArr(newArrObj.newArr, action),
+        latestNumberBig: action.id
+      });
+      return true;
     }
+
+    this.setState({
+      btnPressSmallArr: getNewStateArr(newArrObj.newArr, action),
+      latestNumberSmall: action.id
+    });
   };
 
   handleResult = () => {
-    const { btnPressBigArr, btnPressSmallArr } = this.state;
+    const { btnPressSmallArr, btnPressBigArr } = this.state;
 
-    const randomBigArr = getRandomInt(19, 1, fieldBigState.max);
-    const randomSmallArr = getRandomInt(2, 1, fieldSmallState.max);
+    const handleGetGameResult = getGameResult(
+      btnPressSmallArr,
+      btnPressBigArr,
+      fieldSmallState.max,
+      fieldBigState.max
+    );
 
-    //let arr1 = [1, 2, 3, 5, 6, 7, 8, 9];
-    //let arr2 = [3, 2, 4, 5, 6, 7, 8, 1];
-
-    let bigResultCount = 0;
-    let smallResultCount = 0;
-
-    const resultBigArr = randomBigArr.every(el => {
-      if (btnPressBigArr.includes(el)) {
-        bigResultCount++;
-      }
-      return btnPressBigArr.includes(el);
+    this.setState({
+      randomBigArr: handleGetGameResult.randomBigArr,
+      randomSmallArr: handleGetGameResult.randomSmallArr,
+      win: handleGetGameResult.win,
+      bigResultCount: handleGetGameResult.bigResultCount,
+      smallResultCount: handleGetGameResult.smallResultCount,
+      resultFlag: true
     });
-
-    const resultSmallArr = randomSmallArr.every(el => {
-      if (btnPressSmallArr.includes(el)) {
-        smallResultCount++;
-      }
-      return btnPressSmallArr.includes(el);
-    });
-    
-    //console.log("1: ", bigResultCount);
-    //console.log("2: ", btnPressBigArr);
-    //console.log("3: ", resultBigArr);
   };
 
   render() {
-    const { btnPressBigArr, btnPressSmallArr } = this.state;
+    const {
+      btnPressBigArr,
+      btnPressSmallArr,
+      randomBigArr,
+      randomSmallArr,
+      win,
+      bigResultCount,
+      smallResultCount,
+      resultFlag
+    } = this.state;
+
+    const btnPressLength = btnPressBigArr.length + btnPressSmallArr.length;
+    const btnPressLengthFlag =
+      btnPressLength < fieldSmallState.max + fieldBigState.max ? true : false;
+
     return (
       <div className="game">
         <div className="game__item">
@@ -96,10 +105,20 @@ class GameContainer extends Component {
             btnPressBigArr={btnPressBigArr}
             btnPressSmallArr={btnPressSmallArr}
             handleResult={this.handleResult}
+            btnPressLengthFlag={btnPressLengthFlag}
           />
         </div>
         <div className="game__item">
-          <GameItemText />
+          <GameItemText
+            randomBigArr={randomBigArr}
+            randomSmallArr={randomSmallArr}
+            win={win}
+            btnPressBigArr={btnPressBigArr}
+            btnPressSmallArr={btnPressSmallArr}
+            bigResultCount={bigResultCount}
+            smallResultCount={smallResultCount}
+            resultFlag={resultFlag}
+          />
         </div>
       </div>
     )

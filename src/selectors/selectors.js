@@ -1,3 +1,15 @@
+import "core-js/features/array/from";
+
+export const shuffle = array => {
+  for (var tmp, cur, top = array.length; top--; ) {
+    cur = (Math.random() * (top + 1)) << 0;
+    tmp = array[cur];
+    array[cur] = array[top];
+    array[top] = tmp;
+  }
+  return array;
+};
+
 export const getInitionalBtnArr = num =>
   Array.from({ length: num }, (v, k) => ++k);
 
@@ -13,21 +25,83 @@ export const getActionPressNum = (bol, arr, max, latest) => {
   return numBig < max ? arr : arr.filter(field => field !== latest);
 };
 
-export const getRandomInt = (max, min, length) => {
-  var result = [],
-    resultSorted = [];
-  if (typeof max !== "number") return Math.random();
-  if (typeof min !== "number") return Math.floor(Math.random() * ++max);
-  if (min > max) min = [max, (max = min)][0];
-  if (!length || typeof length !== "number")
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  if (length > max - min + 1) throw new RangeError("invalid length.");
-  for (var j = 0, random, index; j < length; j++, max--) {
-    random = Math.floor(Math.random() * (max - min + 1)) + min;
-    for (index = j; index && resultSorted[index - 1] <= random; index--)
-      random++;
-    result.push(random);
-    resultSorted.splice(index, 0, random);
+export const getRandomInt = (min, max, length) => {
+  const arr = Array.from({ length: max - min }, (v, k) => max - k);
+  return shuffle(arr).slice(0, length);
+};
+
+export const getGameResult = (smallArr, bigArr, smallArrMax, bigArrMax) => {
+  const randomBigArr = getRandomInt(0, 19, bigArrMax);
+  const randomSmallArr = getRandomInt(0, 2, smallArrMax);
+
+  let bigResultCount = 0;
+  let smallResultCount = 0;
+
+  bigArr.every(el => {
+    if (randomBigArr.includes(el)) {
+      bigResultCount++;
+    }
+    return bigArr.includes(el);
+  });
+
+  smallArr.every(el => {
+    if (randomSmallArr.includes(el)) {
+      smallResultCount++;
+    }
+    return smallArr.includes(el);
+  });
+
+  if (
+    (bigResultCount === 7 || bigResultCount === 8) &&
+    smallResultCount === 1
+  ) {
+    return {
+      randomBigArr,
+      randomSmallArr,
+      win: true,
+      bigResultCount,
+      smallResultCount
+    };
   }
-  return result;
+  return {
+    randomBigArr,
+    randomSmallArr,
+    win: false,
+    bigResultCount,
+    smallResultCount
+  };
+};
+
+export const getPressBtnState = (
+  action,
+  bigArr,
+  smallArr,
+  latestNumberBig,
+  latestNumberSmall,
+  bigMax,
+  smallMax
+) => {
+
+  let newArr;
+  switch (action.type) {
+    case "fieldBig":
+      newArr = getActionPressNum(
+        action.btnPress,
+        bigArr,
+        bigMax,
+        latestNumberBig
+      );
+
+      return { newArr, type: "big" };
+    case "fieldSmall":
+      newArr = getActionPressNum(
+        action.btnPress,
+        smallArr,
+        smallMax,
+        latestNumberSmall
+      );
+      return { newArr, type: "small" };
+    default:
+      return false;
+  }
 };

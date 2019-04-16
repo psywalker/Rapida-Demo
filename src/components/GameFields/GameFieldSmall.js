@@ -10,7 +10,7 @@ const GameFieldSmall = ({
   return (
     <div className="game-field">
       <h3 className="game-field__title">
-        <b>Поле 2</b> отметьте 2 числа
+        <b>Поле 2</b> отметьте 1 число
       </h3>
       <ul className="game-field-list">
         {smallFieldArr.map(item => {

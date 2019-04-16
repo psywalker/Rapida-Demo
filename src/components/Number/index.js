@@ -7,6 +7,7 @@ const Number = ({ id, type, press, handleBtnPress }) => {
     : "game-field-list__btn ";
 
   const handleBtn = () => {
+    if (!handleBtnPress) return false;
     const action = {
       id,
       type,
@@ -18,7 +19,13 @@ const Number = ({ id, type, press, handleBtnPress }) => {
 
   return (
     <div className="game-field-list__item">
-      <button onClick={handleBtn} type="button" className={classBtn}>
+      <button
+        onClick={handleBtn}
+        onTouchStart={handleBtn}
+        onTouchEnd={handleBtn}
+        type="button"
+        className={classBtn}
+      >
         {id}
       </button>
     </div>
