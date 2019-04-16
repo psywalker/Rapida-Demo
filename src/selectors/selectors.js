@@ -1,4 +1,4 @@
-import "core-js/features/array/from";
+import "core-js";
 
 export const shuffle = array => {
   for (var tmp, cur, top = array.length; top--; ) {

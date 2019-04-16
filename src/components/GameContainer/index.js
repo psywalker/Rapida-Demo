@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GameItemField from "components/GameItems/GameItemField";
 import GameItemText from "components/GameItems/GameItemText";
 import { fieldSmallState, fieldBigState } from "initialStates/fieldsState";
+import axios from "axios";
 import {
   getInitionalBtnArr,
   getNewStateArr,
@@ -22,7 +23,8 @@ class GameContainer extends Component {
     win: false,
     bigResultCount: 0,
     smallResultCount: 0,
-    resultFlag: false
+    resultFlag: false,
+    queryDataFlag: false
   };
 
   smallFieldArr = getInitionalBtnArr(fieldSmallState.count);
@@ -62,6 +64,8 @@ class GameContainer extends Component {
 
   handleResult = () => {
     const { btnPressSmallArr, btnPressBigArr } = this.state;
+    let queryTimeOut;
+    let timeOutCount = 0;
 
     const handleGetGameResult = getGameResult(
       btnPressSmallArr,
@@ -69,6 +73,32 @@ class GameContainer extends Component {
       fieldSmallState.max,
       fieldBigState.max
     );
+
+    const handleQueryData = () => {
+      const queryData = {
+        selectedNumber: {
+          firstField: btnPressBigArr,
+          secondField: btnPressSmallArr
+        },
+        isTicketWon: handleGetGameResult.win
+      };
+      axios
+        .post("/finch-test", { queryData })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
+        .catch(error => {
+          if (timeOutCount === 2) {
+            clearTimeout(queryTimeOut);
+            this.setState({ queryDataFlag: true });
+            return false;
+          }
+          queryTimeOut = setTimeout(handleQueryData, 2000);
+          timeOutCount++;
+        });
+    };
+    handleQueryData();
 
     this.setState({
       randomBigArr: handleGetGameResult.randomBigArr,
@@ -90,10 +120,11 @@ class GameContainer extends Component {
       btnPressBigArr: bigArr,
       latestNumberBig: latBig,
       btnPressSmallArr: smallArr,
-      latestNumberSmall: latSmall
+      latestNumberSmall: latSmall,
+      resultFlag: false
     });
-  }
-
+  };
+  handleQueryPopupToggle = () => this.setState({ queryDataFlag: false });
   render() {
     const {
       btnPressBigArr,
@@ -103,7 +134,8 @@ class GameContainer extends Component {
       win,
       bigResultCount,
       smallResultCount,
-      resultFlag
+      resultFlag,
+      queryDataFlag
     } = this.state;
 
     const btnPressLength = btnPressBigArr.length + btnPressSmallArr.length;
@@ -113,6 +145,17 @@ class GameContainer extends Component {
     return (
       <div className="game">
         <div className="game__item">
+          {queryDataFlag && (
+            <div className="game__query game-query-popup">
+              <i
+                onClick={this.handleQueryPopupToggle}
+                className="game-query-popup__btn-toggle"
+              >
+                ✖
+              </i>
+              Уведомление об ошибке запроса
+            </div>
+          )}
           <GameItemField
             smallFieldArr={this.smallFieldArr}
             bigFieldArr={this.bigFieldArr}
